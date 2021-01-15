@@ -1,2 +1,2 @@
 # Codeforces-Solutions
-It contains solutions of Codeforce' problems
+It contains solutions of Codeforces problems
