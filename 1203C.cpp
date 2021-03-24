@@ -30,9 +30,32 @@ int main()
 {
     amazing;
     ll t = 1;
-    cin >> t;
+    //cin >> t;
     while (t--)
     {
+        ll n;
+        cin >> n;
+        ll g = 0;
+        ll x;
+        fo(i, n)
+        {
+            cin >> x;
+            g = __gcd(g, x);
+        }
+        ll ans = 0;
+        for (ll i = 1; i * i <= g; ++i)
+        {
+            if (g % i == 0)
+            {
+                ++ans;
+                if (i != g / i)
+                {
+                    ++ans;
+                }
+            }
+        }
+        cout << ans;
+        br;
     }
     return 0;
 }
