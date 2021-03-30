@@ -26,6 +26,18 @@ typedef map<ll, ll> mll;
 
 int MOD = 1e9 + 7;
 
+ll findsum(ll a)
+{
+    ll temp = a;
+    ll sum = 0;
+    while (temp > 0)
+    {
+        sum += temp % 10;
+        temp /= 10;
+    }
+    return sum;
+}
+
 int main()
 {
     amazing;
@@ -33,6 +45,24 @@ int main()
     cin >> t;
     while (t--)
     {
+        ll a;
+        cin >> a;
+        ll sum = findsum(a);
+        while (true)
+        {
+            if (__gcd(a, sum) > 1)
+            {
+                cout << a;
+                br;
+                break;
+            }
+            else
+            {
+                a++;
+                sum = findsum(a);
+                continue;
+            }
+        }
     }
     return 0;
 }

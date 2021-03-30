@@ -1,52 +1,60 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define PI 3.141592653589793238462
-#define si(x) scanf("%d", &x)
-#define sl(x) scanf("%lld", &x)
-#define ss(s) scanf("%s", s)
-#define pi(x) printf("%d\n", x)
-#define pl(x) printf("%lld\n", x)
-#define ps(s) printf("%s\n", s)
-#define br printf("\n")
+#define PI 3.14159265
+#define br cout << endl
 #define fo(i, n) for (int i = 0; i < n; i++)
 #define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
 #define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
-#define f first
-#define s second
+#define ff first
+#define ss second
 #define pb push_back
 #define file_read                     \
     freopen("input.txt", "r", stdin); \
     freopen("output.txt", "w", stdout);
 typedef pair<int, int> pii;
-typedef pair<ll, ll> pl;
+typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<ll> vl;
+typedef vector<string> vs;
 typedef vector<pii> vpii;
-typedef vector<pl> vpl;
+typedef vector<pll> vpl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
+typedef map<int, int> mii;
+typedef map<ll, ll> mll;
+
 int MOD = 1e9 + 7;
 
 int main()
 {
     amazing;
-    ll t = 1;
-    cin >> t;
-    while (t--)
+    // ll t = 1;
+    // cin >> t;
+    // while (t--)
+    // {
+    // }
+    ll n;
+    cin >> n;
+    string str;
+    cin >> str;
+    int array[26] = {0};
+    ll count = 0;
+    fo(i, str.length())
     {
-        ll n;
-        cin >> n;
-        ll a = n / 2020;
-        ll b = n % 2020;
-        if (a >= b)
+        if (i % 2 == 0)
         {
-            cout << "YES" << endl;
+            array[str[i] - 'a']++;
         }
         else
         {
-            cout << "NO" << endl;
+            if (array[str[i] - 'A'] == 0)
+                count++;
+            else
+                array[str[i] - 'A']--;
         }
     }
+    cout << count;
+    br;
     return 0;
 }
