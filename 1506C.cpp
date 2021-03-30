@@ -26,6 +26,24 @@ typedef map<ll, ll> mll;
 
 int MOD = 1e9 + 7;
 
+ll get_hash(string s)
+{
+    int p = 31; // Take 53 if both uppercase and lowercase letters
+    int m = 1e9 + 9;
+    ll hash_value = 0;
+    char c;
+    ll power[s.length()];
+    power[0] = 1;
+    for (int i = 1; i < s.length(); i++)
+        power[i] = (power[i - 1] * p) % m;
+    for (int i = 0; i < s.length(); ++i)
+    {
+        c = s[i];
+        hash_value = (hash_value + (c - 'a' + 1) * power[i]) % m;
+    }
+    return hash_value;
+}
+
 int main()
 {
     amazing;
@@ -33,32 +51,24 @@ int main()
     cin >> t;
     while (t--)
     {
-        ll n;
-        cin >> n;
-        ll x;
-        vl a;
-        fo(i, n)
+        string a, b;
+        cin >> a >> b;
+        int n = a.size(), m = b.size();
+        int ans = 0;
+        for (int len = 1; len <= min(n, m); len++)
         {
-            cin >> x;
-            a.push_back(x);
-        }
-        ll maxi = 0, sum = 0;
-        fo(i, a.size())
-        {
-            ll pos = i;
-            while (pos < a.size())
+            for (int i = 0; i + len <= n; i++)
             {
-                sum += a[pos];
-                pos += a[pos];
+                for (int j = 0; j + len <= m; j++)
+                {
+                    if (a.substr(i, len) == b.substr(j, len))
+                    {
+                        ans = max(ans, len);
+                    }
+                }
             }
-            if (sum > maxi)
-            {
-                maxi = sum;
-            }
-            sum = 0;
         }
-        cout << maxi;
-        br;
+        cout << a.size() + b.size() - 2 * ans << "\n";
     }
     return 0;
 }

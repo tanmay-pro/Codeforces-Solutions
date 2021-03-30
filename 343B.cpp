@@ -29,10 +29,38 @@ int MOD = 1e9 + 7;
 int main()
 {
     amazing;
-    ll t = 1;
-    cin >> t;
-    while (t--)
+    // ll t = 1;
+    // cin >> t;
+    // while (t--)
+    // {
+    // }
+    string str;
+    stack<char> s;
+    cin >> str;
+    fo(i, str.length())
     {
+        if (s.empty())
+        {
+            s.push(str[i]);
+        }
+        else
+        {
+            if (str[i] == s.top())
+            {
+                s.pop();
+            }
+            else
+            {
+                s.push(str[i]);
+            }
+        }
+    }
+    if (s.empty())
+        cout << "Yes" << endl;
+    else
+    {
+        cout << "No";
+        br;
     }
     return 0;
 }
