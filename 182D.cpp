@@ -35,7 +35,7 @@ ll get_hash(string s, string t, ll p_pow[])
     for (int i = 0; i < T; i++)
     {
         hash_of_t[i + 1] = (hash_of_t[i] + (t[i] - 'a' + 1) * p_pow[i]) % m;
-    }
+    } 
     ll hash_of_s = 0;
     for (int i = 0; i < S; i++)
     {
