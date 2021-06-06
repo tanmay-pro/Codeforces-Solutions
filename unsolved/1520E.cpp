@@ -37,33 +37,59 @@ int main()
         cin >> n;
         string str;
         cin >> str;
-        ll no_of_sheep = 0;
-        fo(i, n)
+        ll max_consec = 0;
+        ll temp = 1;
+        ll starting_pos = 0;
+        ll starting_pos_temp = 0;
+        Fo(i, 1, n)
         {
-            if (str[i] == '*')
-                no_of_sheep++;
-        }
-        vl diff_array;
-        stack<int> s;
-        ll count = 0;
-        fo(i, n)
-        {
-            if (str[i] == '*' && s.empty())
+            if (str[i - 1] == '*' && str[i] == '*')
             {
-                s.push_back(1);
-                count = 0;
+                temp++;
+                if (i == n - 1)
+                {
+                    if (max_consec < temp)
+                    {
+                        max_consec = temp;
+                        starting_pos = starting_pos_temp;
+                    }
+                    temp = 1;
+                }
             }
-            else if (str[i] == '*' && !s.empty())
-            {
-                s.pop();
-                diff_array.push_back(count);
-                count = 0;
-            }
+            else if (str[i] == '*' && str[i - 1] == '.')
+                starting_pos_temp = i;
             else
             {
-                count++;
+                if (max_consec < temp)
+                {
+                    max_consec = temp;
+                    starting_pos = starting_pos_temp;
+                }
+                temp = 1;
             }
         }
+        ll ending_pos = starting_pos + max_consec - 1;
+        ll sum = 0;
+        ll check = 1;
+        Fo(i, starting_pos - 1, -1)
+        {
+            if (str[i] == '*')
+            {
+                sum += starting_pos - check - i;
+                check++;
+            }
+        }
+        check = 1;
+        Fo(i, ending_pos + 1, n)
+        {
+            if (str[i] == '*')
+            {
+                sum += i - ending_pos - check;
+                check++;
+            }
+        }
+        cout << sum;
+        br;
     }
     return 0;
 }
