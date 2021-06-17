@@ -5,7 +5,9 @@ using namespace std;
 #define br cout << endl
 #define fo(i, n) for (int i = 0; i < n; i++)
 #define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
-#define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
+#define tr(container, it) \
+    for (auto it = container.begin(); it != container.end(); it++)
+#define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
 #define ff first
 #define ss second
 #define pb push_back
@@ -23,8 +25,8 @@ typedef vector<vi> vvi;
 typedef vector<vl> vvl;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
-
-int MOD = 1e9 + 7;
+ll MOD = 1e9 + 7;
+int p = 31;
 
 int main()
 {
@@ -33,7 +35,6 @@ int main()
     cin >> t;
     while (t--)
     {
-        
     }
     return 0;
 }

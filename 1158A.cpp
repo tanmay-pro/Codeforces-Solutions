@@ -7,7 +7,7 @@ using namespace std;
 #define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
 #define tr(container, it) \
     for (auto it = container.begin(); it != container.end(); it++)
-#define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
+#define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
 #define ff first
 #define ss second
 #define pb push_back
@@ -28,25 +28,48 @@ typedef map<ll, ll> mll;
 ll MOD = 1e9 + 7;
 int p = 31;
 
-ll maxim(ll a, ll b, ll c)
-{
-    ll max_val = max(a, b);
-    return max(max_val, c);
-}
-
-ll minim(ll a, ll b, ll c)
-{
-    ll min_val = min(a, b);
-    return min(min_val, c);
-}
-
 int main()
 {
-    amazing;
-    ll t = 1;
-    cin >> t;
-    while (t--)
-    {
-    }
-    return 0;
+	amazing;
+//    ll t = 1;
+//    cin >> t;
+//    while (t--)
+//    {
+//    }
+	ll n, m;
+	cin >> n >> m;
+	ll sum = 0;
+	vl b(n), g(m);
+	fo(i, n)
+	{
+		cin >> b[i];
+	}
+	fo(i, m)
+	{
+		cin >> g[i];
+	}
+	sort(b.begin(), b.end());
+	if(*min_element(g.begin(), g.end()) < b[n-1])
+	{
+		cout << -1;
+		return 0;
+	}
+	ll min_sum = 0;
+	fo(i, n-1)
+	{
+		min_sum += b[i];
+	}
+	fo(i, m)
+	{
+		sum += g[i];
+		sum += min_sum;
+	}
+	if(*min_element(g.begin(), g.end()) != b[n-1])
+	{
+		sum -=b[n-2];
+		sum+=b[n-1];
+	}
+	cout << sum;
+	br;
+	return 0;
 }
