@@ -43,10 +43,50 @@ ll minim(ll a, ll b, ll c)
 int main()
 {
     amazing;
-    ll t = 1;
-    cin >> t;
-    while (t--)
+    ll n, k;
+    cin >> n >> k;
+    string str;
+    cin >> str;
+    char t[n];
+    fo(i, n)
     {
+        t[i] = str[i];
     }
+    fo(i, n - 1)
+    {
+        if (t[i] == '4' && t[i + 1] == '7' && k > 0)
+        {
+            if (t[i - 1] == '4')
+            {
+                if (i % 2 == 1)
+                {
+                    k = k % 2;
+                    if (k == 0)
+                    {
+                        break;
+                    }
+                }
+            }
+            if (i % 2 == 0)
+            {
+                t[i + 1] = '4';
+                k--;
+            }
+            else
+            {
+                t[i] = '7';
+                k--;
+            }
+        }
+        if (k == 0)
+        {
+            break;
+        }
+    }
+    fo(i, n)
+    {
+        cout << t[i];
+    }
+    br;
     return 0;
 }

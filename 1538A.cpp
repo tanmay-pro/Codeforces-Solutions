@@ -5,6 +5,8 @@ using namespace std;
 #define br cout << endl
 #define fo(i, n) for (int i = 0; i < n; i++)
 #define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
+#define tr(container, it) \
+    for (auto it = container.begin(); it != container.end(); it++)
 #define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
 #define ff first
 #define ss second
@@ -45,7 +47,34 @@ int main()
     cin >> t;
     while (t--)
     {
-        
+        ll n;
+        cin >> n;
+        vl power(n);
+        fo(i, n)
+        {
+            cin >> power[i];
+        }
+        ll maxvi = max_element(power.begin(), power.end()) - power.begin();
+        ll minvi = min_element(power.begin(), power.end()) - power.begin();
+        // cout << "max = " << maxvi;
+        // cout << "min = " << minvi;
+
+        if (maxvi > minvi)
+        {
+            ll val1 = n - minvi;
+            ll val2 = maxvi + 1;
+            ll val3 = minvi + 1 + n - maxvi;
+            ll minvalue = minim(val1, val2, val3);
+            cout << minvalue << endl;
+        }
+        else
+        {
+            ll val1 = n - maxvi;
+            ll val2 = minvi + 1;
+            ll val3 = maxvi + 1 + n - minvi;
+            ll minvalue = minim(val1, val2, val3);
+            cout << minvalue << endl;
+        }
     }
     return 0;
 }

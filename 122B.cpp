@@ -5,6 +5,8 @@ using namespace std;
 #define br cout << endl
 #define fo(i, n) for (int i = 0; i < n; i++)
 #define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
+#define tr(container, it) \
+    for (auto it = container.begin(); it != container.end(); it++)
 #define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
 #define ff first
 #define ss second
@@ -23,40 +25,59 @@ typedef vector<vi> vvi;
 typedef vector<vl> vvl;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
-int m = 1e9 + 7;
+ll MOD = 1e9 + 7;
 int p = 31;
+
+ll maxim(ll a, ll b, ll c)
+{
+    ll max_val = max(a, b);
+    return max(max_val, c);
+}
+
+ll minim(ll a, ll b, ll c)
+{
+    ll min_val = min(a, b);
+    return min(min_val, c);
+}
 
 int main()
 {
     amazing;
-    ll t = 1;
-    cin >> t;
-    while (t--)
+    // ll t = 1;
+    // cin >> t;
+    // while (t--)
+    // {
+    // }
+    string str;
+    cin >> str;
+    bool set = false;
+    fo(i, str.length())
     {
-        ll cost = 0;
-        ll n, l, r;
-        cin >> n >> l >> r;
-        ll color_l[n];
-        fo(i, l)
+        if (str[i] == '4' || str[i] == '7')
         {
-            ll x;
-            cin >> x;
-            color_l[x]++;
+            set = true;
+            break;
         }
-        ll color_r[n];
-        fo(i, r)
-        {
-            ll x;
-            cin >> x;
-            color_r[x]++;
-        }
-        fo(i, n)
-        {
-            if (color_l[i] != color_r[i] && (color_r[i] + color_l[i])%2 == 0)
-            {
-                cost += abs(color_l[i] - color_r[i]);
-            }
-        }
+    }
+    if (set == false)
+    {
+        cout << -1;
+        br;
         return 0;
     }
+    ll ans4 = 0;
+    ll ans7 = 0;
+    fo(i, str.length())
+    {
+        if (str[i] == '4')
+            ans4++;
+        else if (str[i] == '7')
+            ans7++;
+    }
+    if (ans4 >= ans7)
+        cout << "4";
+    else
+        cout << "7";
+    br;
+    return 0;
 }

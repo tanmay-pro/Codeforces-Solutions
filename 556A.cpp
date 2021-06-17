@@ -5,6 +5,8 @@ using namespace std;
 #define br cout << endl
 #define fo(i, n) for (int i = 0; i < n; i++)
 #define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
+#define tr(container, it) \
+    for (auto it = container.begin(); it != container.end(); it++)
 #define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
 #define ff first
 #define ss second
@@ -16,43 +18,50 @@ typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 typedef vector<int> vi;
 typedef vector<ll> vl;
-typedef vector<string> vs;  
+typedef vector<string> vs;
 typedef vector<pii> vpii;
 typedef vector<pll> vpl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
 typedef map<int, int> mii;
 typedef map<ll, ll> mll;
-int m = 1e9 + 7;
+ll MOD = 1e9 + 7;
 int p = 31;
+
+ll maxim(ll a, ll b, ll c)
+{
+    ll max_val = max(a, b);
+    return max(max_val, c);
+}
+
+ll minim(ll a, ll b, ll c)
+{
+    ll min_val = min(a, b);
+    return min(min_val, c);
+}
 
 int main()
 {
     amazing;
-    ll t = 1;
-    cin >> t;
-    while (t--)
+    // ll t = 1;
+    // cin >> t;
+    // while (t--)
+    // {
+    // }
+    ll n;
+    cin >> n;
+    string str;
+    cin >> str;
+    ll c1 = 0;
+    ll c2 = 0;
+    fo(i, n)
     {
-        string str;
-        cin >> str;
-        string ans;
-        ll p_pow[str.length() + 1];
-        p_pow[0] = 1;
-        for (int i = 1; i < str.length() + 1; i++)
-            p_pow[i] = (p_pow[i - 1] * p) % m;
-        ll hp[str.length() + 1, 0];
-        for (int i = 0; i < str.length(); i++)
-            hp[i + 1] = (hp[i] + (str[i] - 'a' + 1) * p_pow[i]) % m;
-        ll hs[str.length() + 1, 0];
-        for (int i = 0; i < str.length(); i++)
-            hs[i + 1] = (hs[i] + (str[str.length() - 1 - i] - 'a' + 1) * p_pow[i]) % m;
-        int pos = -1;   
-        fo(i, str.length())
-        {
-            if (hp[i] == hp[s])
-                pos = i;
-        }
-
+        if (str[i] == '1')
+            c1++;
+        else
+            c2++;
     }
+    cout << abs(c1 - c2);
+    br;
     return 0;
 }

@@ -5,6 +5,8 @@ using namespace std;
 #define br cout << endl
 #define fo(i, n) for (int i = 0; i < n; i++)
 #define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
+#define tr(container, it) \
+    for (auto it = container.begin(); it != container.end(); it++)
 #define amazing ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
 #define ff first
 #define ss second
@@ -41,12 +43,28 @@ ll minim(ll a, ll b, ll c)
 int main()
 {
     amazing;
-    // ll t = 1;
-    // cin >> t;
-    // while (t--)
-    // {
-
-    // }
-    
+    ll t = 1;
+    cin >> t;
+    while (t--)
+    {
+        ll n, l, r;
+        cin >> n >> l >> r;
+        vl a(n);
+        fo(i, n)
+        {
+            cin >> a[i];
+        }
+        sort(a.begin(), a.end());
+        ll answer = 0;
+        tr(a, it)
+        {
+            ll elem = *it;
+            ll upper1 = upper_bound(it + 1, a.end(), r - elem) - it - 2;
+            ll lower1 = lower_bound(it + 1, a.end(), l - elem) - it - 1;
+            answer += upper1 - lower1 + 1;
+        }
+        cout << answer;
+        br;
+    }
     return 0;
 }
